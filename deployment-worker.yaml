@@ -20,3 +20,4 @@ spec:
         args:
           - "--worker"
           - "--master-host=locust-master"
+          - "--master-port=5557"
