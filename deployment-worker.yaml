@@ -1,33 +1,22 @@
-# deployment-master.yaml
+# deployment-worker.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: locust-master
+  name: locust-worker
   namespace: locust
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: locust-master
+      app: locust-worker
   template:
     metadata:
       labels:
-        app: locust-master
+        app: locust-worker
     spec:
       containers:
       - name: locust
         image: locustio/locust:2.24.1
         args:
-          - "--master"
-        ports:
-          - containerPort: 8089
-        volumeMounts:
-          - name: locustfile
-            mountPath: /mnt/locust
-        env:
-          - name: LOCUST_LOCUSTFILE
-            value: /mnt/locust/locustfile.py
-      volumes:
-        - name: locustfile
-          configMap:
-            name: locustfile
+          - "--worker"
+          - "--master-host=locust-master"
