@@ -1,0 +1,14 @@
+# service-master.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: locust-master
+  namespace: locust
+spec:
+  type: NodePort
+  selector:
+    app: locust-master
+  ports:
+    - port: 8089
+      targetPort: 8089
+      nodePort: 30089
