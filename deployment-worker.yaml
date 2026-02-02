@@ -1,4 +1,3 @@
-# deployment-worker.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -21,3 +20,11 @@ spec:
           - "--worker"
           - "--master-host=locust-master"
           - "--master-port=5557"
+          - "--locustfile=/mnt/locust/locustfile.py"
+        volumeMounts:
+          - name: locustfile
+            mountPath: /mnt/locust
+      volumes:
+        - name: locustfile
+          configMap:
+            name: locustfile
