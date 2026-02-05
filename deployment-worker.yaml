@@ -20,3 +20,13 @@ spec:
         args:
           - "--worker"
           - "--master-host=locust-master"
+        volumeMounts:
+          - name: locustfile
+            mountPath: /mnt/locust
+        env:
+          - name: LOCUST_LOCUSTFILE
+            value: /mnt/locust/locustfile.py
+      volumes:
+        - name: locustfile
+          configMap:
+            name: locustfile
