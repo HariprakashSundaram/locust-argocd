@@ -5,13 +5,10 @@ metadata:
   name: locust-master
   namespace: locust
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: locust-master
   ports:
-    - name: web
-      port: 8089
+    - port: 8089
       targetPort: 8089
-    - name: master-rpc
-      port: 5557
-      targetPort: 5557
+      nodePort: 30089

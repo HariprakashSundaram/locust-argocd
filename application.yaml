@@ -7,7 +7,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/HariprakashSundaram/locust-argocd
+    repoURL: https://github.com/YOUR_USERNAME/locust-argocd-k8s
     targetRevision: main
     path: .
   destination:
