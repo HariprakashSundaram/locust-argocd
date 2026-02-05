@@ -20,7 +20,10 @@ spec:
         args:
           - "--master"
         ports:
-          - containerPort: 8089
+          - name: web
+            containerPort: 8089
+          - name: master-rpc
+            containerPort: 5557
         volumeMounts:
           - name: locustfile
             mountPath: /mnt/locust
