@@ -1,8 +1,14 @@
-from locust import HttpUser, task, between
+"""
+Main Locustfile - Multi-site Load Testing
+Dynamically imports test classes from scripts
+"""
 
-class SimpleUser(HttpUser):
-    wait_time = between(1, 2)
+from google_load_test import GoogleLoadTest
+from demoblaze_load_test import DemoBlazeLoadTest
+from opencart_load_test import OpenCartLoadTest
 
-    @task
-    def home(self):
-        self.client.get("/")
+__all__ = [
+    'GoogleLoadTest',
+    'DemoBlazeLoadTest', 
+    'OpenCartLoadTest'
+]
