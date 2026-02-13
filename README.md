@@ -11,6 +11,8 @@ The task checks remain as a safety backup - even spawned users won't execute if 
 
 # argocd steps
 ===================================================================
+
+
 kubectl get secret argocd-initial-admin-secret -n argocd `
 -o jsonpath="{.data.password}" |
   %{ [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($_)) }
